@@ -1,6 +1,6 @@
 "use client";
 import { notFound } from "next/navigation";
-import { CheckCircle, Leaf, ShieldCheck, Star, Truck, Calendar } from "lucide-react";
+import { CheckCircle, Leaf, ShieldCheck, Star, Truck, Calendar, ChevronRight } from "lucide-react";
 import { PREMADE_BOXES } from "@/lib/data";
 import { useCart } from "@/lib/cart-context";
 import { useRouter } from "next/navigation";
@@ -18,8 +18,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="grid md:grid-cols-2 gap-10 items-start">
+    <div className="max-w-6xl mx-auto px-4 py-6 md:py-10">
+      <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
         {/* Image — meat first, not closed box */}
         <div className="space-y-3">
           <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center relative overflow-hidden">
@@ -119,8 +119,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {/* Comparison table */}
-      <div className="mt-16">
+      {/* Comparison table — desktop only */}
+      <div className="mt-12 hidden lg:block">
         <h2 className="text-2xl font-black mb-6 text-center">Comparez nos boîtes</h2>
         <div className="overflow-x-auto rounded-2xl border border-gray-200">
           <table className="w-full text-sm">
@@ -159,6 +159,29 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+
+      {/* Mobile alternative — other boxes as cards */}
+      <div className="mt-10 lg:hidden">
+        <h2 className="text-xl font-black mb-4">Autres boîtes disponibles</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {PREMADE_BOXES.filter((b) => b.id !== box.id).map((b) => (
+            <a
+              key={b.id}
+              href={`/produits/${b.slug}`}
+              className="flex items-center justify-between bg-gray-50 rounded-2xl p-4 hover:bg-red-50 transition-colors border border-gray-200 active:scale-95"
+            >
+              <div>
+                <p className="font-bold text-sm text-gray-800">{b.name}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{b.totalKg} kg · {b.weeks} · {b.persons}</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <p className="text-brand-red font-black text-lg">{b.price}$</p>
+                <ChevronRight size={16} className="text-gray-400" />
+              </div>
+            </a>
+          ))}
         </div>
       </div>
     </div>

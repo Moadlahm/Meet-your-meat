@@ -55,7 +55,7 @@ export default function BoiteSurMesurePage() {
   const filteredProducts = CUSTOM_PRODUCTS.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10 pb-28 lg:pb-10">
       <div className="mb-8">
         <span className="badge-halal mb-3 inline-flex"><Leaf size={12} /> Halal certifié</span>
         <h1 className="text-3xl font-black mb-2">Créez votre boîte sur mesure</h1>
@@ -181,7 +181,7 @@ export default function BoiteSurMesurePage() {
                   </div>
                   <div className="flex justify-between text-gray-500">
                     <span>Livraison</span>
-                    <span className="text-green-600 font-semibold">Gratuite</span>
+                    <span className="text-gray-400 italic text-xs">Calculée au panier</span>
                   </div>
                   <div className="flex justify-between font-black text-lg border-t pt-2">
                     <span>Total</span>
@@ -211,6 +211,25 @@ export default function BoiteSurMesurePage() {
           </div>
         </div>
       </div>
+
+      {/* Mobile sticky bottom bar */}
+      {itemCount > 0 && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t border-gray-200 px-4 py-3 shadow-2xl">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-gray-600">
+              {itemCount} article{itemCount > 1 ? "s" : ""} · {totalKg} kg
+            </span>
+            <span className="font-black text-brand-red text-lg">{totalPrice.toFixed(2)}$</span>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-brand-red text-white font-bold py-3 rounded-full flex items-center justify-center gap-2 text-base active:opacity-80"
+          >
+            <ShoppingCart size={18} />
+            Ajouter au panier
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -20,7 +20,8 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
       {/* Announcement bar */}
       <div className="bg-brand-red text-white text-center text-xs sm:text-sm py-2 px-4 font-medium">
-        🎁 <span className="font-black">-10$ sur votre 1ère commande</span> · 🚚 Livraison dimanche · Commandez avant vendredi 23h59
+        <span className="sm:hidden">🎁 <span className="font-black">-10$ 1ère commande</span> · 🚚 Livraison dimanche</span>
+        <span className="hidden sm:inline">🎁 <span className="font-black">-10$ sur votre 1ère commande</span> · 🚚 Livraison dimanche · Commandez avant vendredi 23h59</span>
       </div>
 
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">

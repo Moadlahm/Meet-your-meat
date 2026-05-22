@@ -64,7 +64,7 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10 pb-28 lg:pb-10">
       <h1 className="text-3xl font-black mb-8">Votre panier</h1>
 
       {isEmpty ? (
@@ -314,6 +314,35 @@ export default function CartPage() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Mobile sticky checkout bar */}
+      {!isEmpty && !orderPlaced && (
+        <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden bg-white border-t border-gray-200 px-4 py-3 shadow-2xl">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm text-gray-600">Total</span>
+            <span className="font-black text-brand-red text-lg">
+              {feeResolved ? `${grandTotal.toFixed(2)}$` : `${totalPrice.toFixed(2)}$+`}
+            </span>
+          </div>
+          <button
+            onClick={() => canCheckout && setOrderPlaced(true)}
+            disabled={!canCheckout}
+            className={`w-full font-bold py-3 rounded-full flex items-center justify-center gap-2 text-base ${
+              canCheckout
+                ? "bg-brand-red text-white active:opacity-80"
+                : "bg-gray-200 text-gray-400 cursor-not-allowed"
+            }`}
+          >
+            Confirmer ma commande <ChevronRight size={18} />
+          </button>
+          {!feeResolved && (
+            <p className="text-center text-xs text-gray-400 mt-1">Entrez votre code postal d&apos;abord</p>
+          )}
+          {feeResolved && !deliveryDate && (
+            <p className="text-center text-xs text-amber-600 mt-1">Choisissez une date de livraison</p>
+          )}
         </div>
       )}
     </div>

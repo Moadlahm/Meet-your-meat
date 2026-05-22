@@ -8,7 +8,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="bg-white pt-8 pb-12 md:pt-12 md:pb-20">
+      <section className="bg-white pt-6 pb-10 md:pt-12 md:pb-20">
         <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
           {/* Left: copy */}
           <div>
@@ -56,8 +56,8 @@ export default function HomePage() {
           </div>
 
           {/* Right: hero image */}
-          <div className="relative">
-            <div className="bg-brand-red rounded-3xl overflow-hidden aspect-square md:aspect-auto md:h-[480px] flex items-center justify-center">
+          <div className="relative pb-5 md:pb-0">
+            <div className="bg-brand-red rounded-3xl overflow-hidden h-56 sm:h-72 md:h-auto md:aspect-auto md:min-h-[480px] flex items-center justify-center">
               {/* Placeholder for meat photo */}
               <div className="text-center text-white p-8">
                 <div className="text-8xl mb-4">🥩</div>
@@ -66,7 +66,7 @@ export default function HomePage() {
               </div>
             </div>
             {/* Floating badge */}
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-3 flex items-center gap-2">
+            <div className="absolute -bottom-2 left-3 md:-bottom-4 md:-left-4 bg-white rounded-2xl shadow-xl p-3 flex items-center gap-2">
               <div className="bg-green-100 rounded-full p-2">
                 <Leaf size={16} className="text-green-600" />
               </div>
@@ -80,14 +80,14 @@ export default function HomePage() {
       </section>
 
       {/* ── COMMENT ÇA MARCHE ── */}
-      <section className="bg-brand-red text-white py-14">
+      <section className="bg-brand-red text-white py-10 md:py-14">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-black text-center mb-10">Comment ça marche</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               { n: "1", title: "Choisissez votre boîte", desc: "Boîte prête ou créez la vôtre avec les morceaux que vous aimez." },
               { n: "2", title: "Sélectionnez votre date", desc: "Choisissez parmi les dimanches disponibles. Livraison 12h–21h." },
-              { n: "3", title: "Recevez à domicile", desc: "Votre viande halal fraîche, emballée et livrée chez vous. Gratuit." },
+              { n: "3", title: "Recevez à domicile", desc: "Votre viande halal fraîche, emballée et livrée chez vous. Frais selon votre zone." },
             ].map((step) => (
               <div key={step.n} className="text-center">
                 <div className="w-14 h-14 rounded-full bg-white text-brand-red font-black text-2xl flex items-center justify-center mx-auto mb-4">
@@ -102,7 +102,7 @@ export default function HomePage() {
       </section>
 
       {/* ── BBQ BOXES — Mise en vedette ── */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-10 md:py-14 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-3xl font-black text-brand-black">BBQ Boxes 🔥</h2>
@@ -158,7 +158,7 @@ export default function HomePage() {
       </section>
 
       {/* ── BOÎTES PRÊTES ── */}
-      <section className="py-14 bg-white">
+      <section className="py-10 md:py-14 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-3xl font-black text-brand-black">Boîtes Prêtes</h2>
@@ -209,7 +209,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ZONES DE LIVRAISON ── */}
-      <section className="bg-brand-black text-white py-12">
+      <section className="bg-brand-black text-white py-10 md:py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-black mb-2">On livre dans toute la région</h2>
           <p className="text-gray-400 mb-6 text-sm">Montréal et ses environs, chaque dimanche · Frais selon votre zone</p>
@@ -225,7 +225,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TÉMOIGNAGES ── */}
-      <section className="py-14 bg-white">
+      <section className="py-10 md:py-14 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h2 className="text-3xl font-black text-center mb-2">Ce que disent nos clients</h2>
           <p className="text-center text-gray-500 mb-10 text-sm">Des familles de Montréal qui commandent chaque mois</p>
@@ -254,7 +254,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-14 bg-gray-50">
+      <section className="py-10 md:py-14 bg-gray-50">
         <div className="max-w-2xl mx-auto px-4">
           <h2 className="text-3xl font-black text-center mb-10">Questions fréquentes</h2>
           <div className="space-y-4">
@@ -295,7 +295,7 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="bg-brand-red py-14">
+      <section className="bg-brand-red py-10 md:py-14">
         <div className="max-w-2xl mx-auto px-4 text-center text-white">
           <h2 className="text-3xl font-black mb-3">Prêt à commander ?</h2>
           <p className="text-red-100 mb-8">Livraison dimanche. Commandez avant vendredi 23h59.</p>

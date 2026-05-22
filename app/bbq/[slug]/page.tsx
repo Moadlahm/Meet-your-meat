@@ -27,7 +27,7 @@ export default function BBQProductPage({ params }: { params: { slug: string } })
     <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Image */}
-        <div className="bg-gradient-to-br from-orange-800 to-red-900 rounded-3xl aspect-square flex items-center justify-center relative">
+        <div className="bg-gradient-to-br from-orange-800 to-red-900 rounded-3xl h-56 sm:h-auto sm:aspect-square flex items-center justify-center relative">
           <div className="text-center text-white">
             <div className="text-8xl mb-3">🍖</div>
             <p className="text-orange-200 text-sm">Photo BBQ</p>

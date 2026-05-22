@@ -58,7 +58,7 @@ export default function EmailPopup() {
           {!submitted ? (
             <>
               <p className="text-gray-500 text-sm text-center mb-5">
-                Entrez votre email et recevez votre code promo instantanément. Livraison gratuite incluse.
+                Entrez votre email et recevez votre code promo instantanément. Valable sur votre 1ère commande.
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-3">
