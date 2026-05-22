@@ -61,15 +61,20 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
           {/* Price block */}
           <div className="bg-gray-50 rounded-2xl p-5 mb-6">
-            <div className="flex items-end gap-3 mb-1">
+            <div className="flex items-end gap-3 mb-3">
               <p className="text-4xl font-black text-brand-red">{box.price}$</p>
-              <div className="pb-1">
-                <p className="text-sm text-gray-500 font-medium">{box.totalKg} kg de viande</p>
-                <p className="text-sm text-gray-400">~{box.pricePerKg}$/kg</p>
-              </div>
+              <p className="text-sm text-gray-500 font-medium pb-1">{box.totalKg} kg de viande</p>
             </div>
-            <div className="flex items-center gap-1 text-green-600 text-sm font-semibold mt-2">
-              <Truck size={14} /> Livraison gratuite incluse
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className="bg-white border border-gray-200 rounded-xl px-3 py-1.5 text-sm font-semibold text-gray-700">
+                📅 {box.weeks} de viande
+              </span>
+              <span className="bg-white border border-gray-200 rounded-xl px-3 py-1.5 text-sm font-semibold text-gray-700">
+                👨‍👩‍👧‍👦 {box.persons}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-gray-500 text-sm">
+              <Truck size={14} /> Livraison calculée selon votre zone
             </div>
           </div>
 
@@ -90,7 +95,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
             {[
               { icon: <Leaf size={15} className="text-green-600" />, label: "Halal certifié", sub: "Abattage traditionnel" },
-              { icon: <Truck size={15} className="text-brand-red" />, label: "Livraison gratuite", sub: "Chaque dimanche" },
+              { icon: <Truck size={15} className="text-brand-red" />, label: "Livraison dimanche", sub: "Frais selon votre zone" },
               { icon: <Calendar size={15} className="text-brand-red" />, label: "Choisissez votre date", sub: "4 dimanches disponibles" },
               { icon: <ShieldCheck size={15} className="text-brand-red" />, label: "Viande fraîche", sub: "Préparée le jour J" },
             ].map((s) => (
@@ -124,7 +129,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                 <th className="text-left p-4 font-bold text-gray-600">Boîte</th>
                 <th className="text-center p-4 font-bold text-gray-600">Poids</th>
                 <th className="text-center p-4 font-bold text-gray-600">Prix</th>
-                <th className="text-center p-4 font-bold text-gray-600">Prix/kg</th>
+                <th className="text-center p-4 font-bold text-gray-600">Durée estimée</th>
                 <th className="text-center p-4 font-bold text-gray-600">Personnes</th>
                 <th className="text-center p-4 font-bold text-gray-600">Action</th>
               </tr>
@@ -139,8 +144,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </td>
                   <td className="p-4 text-center">{b.totalKg} kg</td>
                   <td className="p-4 text-center font-bold text-brand-red">{b.price}$</td>
-                  <td className="p-4 text-center text-gray-500">~{b.pricePerKg}$/kg</td>
-                  <td className="p-4 text-center text-gray-500">{i === 0 ? "2–3" : i === 1 ? "4–5" : "6+"}</td>
+                  <td className="p-4 text-center text-gray-500">{b.weeks}</td>
+                  <td className="p-4 text-center text-gray-500">{b.persons}</td>
                   <td className="p-4 text-center">
                     {b.id === box.id ? (
                       <span className="text-brand-red font-bold text-xs">Sélectionnée</span>

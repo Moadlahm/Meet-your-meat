@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CheckCircle, Star, ChevronRight, Leaf, Truck, Calendar, ShieldCheck } from "lucide-react";
 import CountdownTimer from "@/components/CountdownTimer";
+import PostalCheck from "@/components/PostalCheck";
 import { PREMADE_BOXES, BBQ_BOXES, TESTIMONIALS, NEXT_DELIVERY_DEADLINE, NEXT_DELIVERY_DATE } from "@/lib/data";
 
 export default function HomePage() {
@@ -32,7 +33,6 @@ export default function HomePage() {
 
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
               Boîtes prêtes ou sur mesure. Chaque dimanche à Montréal, Laval, Brossard et plus.
-              Livraison gratuite.
             </p>
 
             {/* Countdown */}
@@ -44,19 +44,12 @@ export default function HomePage() {
               <CountdownTimer />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/produits" className="btn-primary text-center justify-center">
-                Choisir ma boîte
-                <ChevronRight size={18} />
-              </Link>
-              <Link href="/boite-sur-mesure" className="btn-secondary text-center justify-center">
-                Créer ma propre boîte
-              </Link>
-            </div>
+            {/* Postal code check — unlocks CTAs */}
+            <PostalCheck />
 
             {/* Trust signals */}
             <div className="flex flex-wrap gap-4 mt-6 text-sm text-gray-500">
-              <span className="flex items-center gap-1.5"><Truck size={14} className="text-brand-red" />Livraison gratuite</span>
+              <span className="flex items-center gap-1.5"><Truck size={14} className="text-brand-red" />Livraison dimanche</span>
               <span className="flex items-center gap-1.5"><Calendar size={14} className="text-brand-red" />Choisissez votre date</span>
               <span className="flex items-center gap-1.5"><ShieldCheck size={14} className="text-brand-red" />Halal certifié</span>
             </div>
@@ -148,7 +141,7 @@ export default function HomePage() {
                   <div className="border-t pt-4 flex items-center justify-between">
                     <div>
                       <p className="text-2xl font-black text-brand-red">{box.price}$</p>
-                      <p className="text-xs text-gray-400">{box.totalKg} kg · ~{box.pricePerKg}$/kg</p>
+                      <p className="text-xs text-gray-400">{box.totalKg} kg{"weeks" in box ? ` · ${box.weeks} pour ${box.persons}` : ` · ${(box as {persons: string}).persons}`}</p>
                     </div>
                     <Link
                       href={`/bbq/${box.slug}`}
@@ -199,7 +192,7 @@ export default function HomePage() {
                   <div className="border-t pt-4 flex items-center justify-between">
                     <div>
                       <p className="text-2xl font-black text-brand-red">{box.price}$</p>
-                      <p className="text-xs text-gray-400">{box.totalKg} kg · ~{box.pricePerKg}$/kg</p>
+                      <p className="text-xs text-gray-400">{box.totalKg} kg{"weeks" in box ? ` · ${box.weeks} pour ${box.persons}` : ` · ${(box as {persons: string}).persons}`}</p>
                     </div>
                     <Link
                       href={`/produits/${box.slug}`}
@@ -218,8 +211,8 @@ export default function HomePage() {
       {/* ── ZONES DE LIVRAISON ── */}
       <section className="bg-brand-black text-white py-12">
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-black mb-2">Livraison gratuite dans toute la région</h2>
-          <p className="text-gray-400 mb-6 text-sm">Montréal et ses environs, chaque dimanche</p>
+          <h2 className="text-2xl font-black mb-2">On livre dans toute la région</h2>
+          <p className="text-gray-400 mb-6 text-sm">Montréal et ses environs, chaque dimanche · Frais selon votre zone</p>
           <div className="flex flex-wrap justify-center gap-2">
             {["Montréal", "Laval", "Brossard", "Longueuil", "Rive-Nord", "Rive-Sud", "Repentigny", "Saint-Jérôme", "Terrebonne", "Blainville", "Boisbriand"].map((zone) => (
               <span key={zone} className="bg-white/10 text-white text-sm px-4 py-1.5 rounded-full hover:bg-white/20 transition-colors">
@@ -272,7 +265,7 @@ export default function HomePage() {
               },
               {
                 q: "Comment se passe la livraison ?",
-                a: "Nous livrons chaque dimanche de 12h à 21h. Vous choisissez votre date lors de votre commande. La livraison est entièrement gratuite dans notre zone de service.",
+                a: "Nous livrons chaque dimanche de 12h à 21h. Vous choisissez votre date lors de votre commande. Les frais de livraison varient selon votre distance — entrez votre code postal pour connaître vos frais exacts.",
               },
               {
                 q: "Quelle est la date limite pour commander ?",
@@ -305,7 +298,7 @@ export default function HomePage() {
       <section className="bg-brand-red py-14">
         <div className="max-w-2xl mx-auto px-4 text-center text-white">
           <h2 className="text-3xl font-black mb-3">Prêt à commander ?</h2>
-          <p className="text-red-100 mb-8">Livraison gratuite ce weekend. Commandez avant vendredi 23h59.</p>
+          <p className="text-red-100 mb-8">Livraison dimanche. Commandez avant vendredi 23h59.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/produits" className="bg-white text-brand-red font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors">
               Voir les boîtes

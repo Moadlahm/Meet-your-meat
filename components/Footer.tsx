@@ -89,7 +89,7 @@ export default function Footer() {
 
         <div className="border-t border-red-700 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-red-300">
           <p>© 2026 MeetYourMeat · Tous droits réservés</p>
-          <p>Viande halal fraîche · Livraison weekend · Montréal</p>
+          <p>Viande halal fraîche · Livraison dimanche · Montréal</p>
         </div>
       </div>
     </footer>

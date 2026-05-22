@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
 * {
   box-sizing: border-box;
 }
@@ -13,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   background: #ffffff;
   color: #1A1A1A;
 }
@@ -33,12 +31,10 @@ body {
   }
 }
 
-/* Countdown digits */
 .countdown-digit {
   @apply bg-brand-black text-white font-black text-2xl w-12 h-12 flex items-center justify-center rounded-lg;
 }
 
-/* Scrollbar hide for horizontal scroll */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

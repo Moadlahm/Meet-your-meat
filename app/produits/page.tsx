@@ -71,11 +71,11 @@ export default function ProduitsPage() {
                   <div className="flex items-end justify-between mb-3">
                     <div>
                       <p className="text-3xl font-black text-brand-red">{box.price}$</p>
-                      <p className="text-xs text-gray-400">{box.totalKg} kg · ~{box.pricePerKg}$/kg</p>
+                      <p className="text-xs text-gray-400">{box.totalKg} kg · {box.weeks} pour {box.persons}</p>
                     </div>
                     <div className="text-right text-xs text-gray-400">
                       <p>Livraison</p>
-                      <p className="font-bold text-green-600">GRATUITE</p>
+                      <p className="font-bold text-gray-600">selon zone</p>
                     </div>
                   </div>
                   <Link

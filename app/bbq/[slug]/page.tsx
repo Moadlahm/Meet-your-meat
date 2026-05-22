@@ -55,15 +55,17 @@ export default function BBQProductPage({ params }: { params: { slug: string } })
           <p className="text-gray-500 mb-5">{box.description}</p>
 
           <div className="bg-orange-50 border border-orange-100 rounded-2xl p-5 mb-5">
-            <div className="flex items-end gap-3">
+            <div className="flex items-end gap-3 mb-3">
               <p className="text-4xl font-black text-brand-red">{box.price}$</p>
-              <div className="pb-1">
-                <p className="text-sm font-medium text-gray-600">{box.totalKg} kg de viande</p>
-                <p className="text-sm text-gray-400">~{box.pricePerKg}$/kg</p>
-              </div>
+              <p className="text-sm font-medium text-gray-600 pb-1">{box.totalKg} kg de viande</p>
             </div>
-            <div className="flex items-center gap-1 text-green-600 text-sm font-semibold mt-2">
-              <Truck size={14} /> Livraison gratuite incluse
+            <div className="flex flex-wrap gap-2 mb-3">
+              <span className="bg-white border border-orange-200 rounded-xl px-3 py-1.5 text-sm font-semibold text-gray-700">
+                🔥 BBQ pour {box.persons}
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-gray-500 text-sm">
+              <Truck size={14} /> Livraison calculée selon votre zone
             </div>
           </div>
 
@@ -82,7 +84,7 @@ export default function BBQProductPage({ params }: { params: { slug: string } })
           <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
             {[
               { icon: <Leaf size={14} className="text-green-600" />, text: "Halal certifié" },
-              { icon: <Truck size={14} className="text-brand-red" />, text: "Livraison gratuite" },
+              { icon: <Truck size={14} className="text-brand-red" />, text: "Livraison selon zone" },
               { icon: <ShieldCheck size={14} className="text-brand-red" />, text: "Fraîche le jour J" },
               { icon: <Users size={14} className="text-brand-red" />, text: persons[box.id] ?? "" },
             ].map((s) => (
