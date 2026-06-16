@@ -1,6 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle, Leaf, ChevronRight } from "lucide-react";
 import { BBQ_BOXES } from "@/lib/data";
+
+const CDN = "https://www.meetyourmeat.ca/cdn/shop/files";
+const BBQ_IMAGES: Record<string, string> = {
+  "bbq-standard":    `${CDN}/boitemeetyourmeat_cefee40e-cff5-4ad6-9c5e-35241bcc4562.png?v=1713988500`,
+  "bbq-feast":       `${CDN}/boitemeetyourmeat_02c0a899-3cd8-459a-8edf-004f8bc9989f.png?v=1765228562`,
+  "bbq-grillmaster": `${CDN}/boitemeetyourmeat.png?v=1713988485`,
+};
 
 export default function BBQPage() {
   return (
@@ -34,11 +42,14 @@ export default function BBQPage() {
                 </div>
               )}
 
-              <div className="bg-gradient-to-br from-orange-800 to-red-900 h-52 flex items-center justify-center">
-                <div className="text-center text-white">
-                  <div className="text-6xl mb-2">🍖</div>
-                  <p className="text-xs text-orange-200">Photo BBQ</p>
-                </div>
+              <div className="bg-white h-52 flex items-center justify-center p-4">
+                <Image
+                  src={BBQ_IMAGES[box.id] ?? `${CDN}/boitemeetyourmeat.png?v=1713988485`}
+                  alt={box.name}
+                  width={200}
+                  height={180}
+                  className="object-contain h-44 w-auto"
+                />
               </div>
 
               <div className="p-6 flex flex-col flex-1">

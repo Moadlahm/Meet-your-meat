@@ -1,7 +1,27 @@
 "use client";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CheckCircle, Leaf, ShieldCheck, Star, Truck, Calendar, ChevronRight } from "lucide-react";
 import { PREMADE_BOXES } from "@/lib/data";
+
+const CDN = "https://www.meetyourmeat.ca/cdn/shop/files";
+const BOX_IMAGES: Record<string, string[]> = {
+  essentielle: [
+    `${CDN}/meetyourmeat-essentiel_f6e2ca18-41d2-40dd-9e84-3c3b43f08a21.png?v=1765228637`,
+    `${CDN}/boitemeetyourmeat_cefee40e-cff5-4ad6-9c5e-35241bcc4562.png?v=1713988500`,
+    `${CDN}/love-meat.png?v=1765228637`,
+  ],
+  standard: [
+    `${CDN}/boite_standard_1.png?v=1765228562`,
+    `${CDN}/boitemeetyourmeat_02c0a899-3cd8-459a-8edf-004f8bc9989f.png?v=1765228562`,
+    `${CDN}/love-meat.png?v=1765228637`,
+  ],
+  avantage: [
+    `${CDN}/Boite_avantage.png?v=1765228664`,
+    `${CDN}/boitemeetyourmeat.png?v=1713988485`,
+    `${CDN}/love-meat.png?v=1765228637`,
+  ],
+};
 import { useCart } from "@/lib/cart-context";
 import { useRouter } from "next/navigation";
 
@@ -20,14 +40,17 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   return (
     <div className="max-w-6xl mx-auto px-4 py-6 md:py-10">
       <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-start">
-        {/* Image — meat first, not closed box */}
+        {/* Images */}
         <div className="space-y-3">
-          <div className="bg-gray-100 rounded-3xl aspect-square flex items-center justify-center relative overflow-hidden">
-            <div className="text-center">
-              <div className="text-8xl mb-3">🥩</div>
-              <p className="text-gray-400 text-sm font-medium">Photo viande fraîche</p>
-              <p className="text-gray-300 text-xs">Remplacer par photo produit</p>
-            </div>
+          <div className="bg-white rounded-3xl border border-gray-100 aspect-square flex items-center justify-center relative overflow-hidden p-6">
+            <Image
+              src={(BOX_IMAGES[box.id] ?? [])[0] ?? `${CDN}/boitemeetyourmeat.png?v=1713988485`}
+              alt={box.name}
+              width={400}
+              height={400}
+              className="object-contain w-full h-full"
+              priority
+            />
             {box.badge && (
               <span className="absolute top-4 left-4 bg-brand-red text-white font-bold px-3 py-1 rounded-full text-sm">
                 {box.badge}
@@ -37,11 +60,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
               <Leaf size={12} /> Halal
             </span>
           </div>
-          {/* Thumbnail strip */}
+          {/* Thumbnails */}
           <div className="flex gap-2">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="w-20 h-20 bg-gray-100 rounded-xl flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-brand-red transition-all">
-                <span className="text-2xl">{i === 0 ? "🥩" : i === 1 ? "📦" : "🔪"}</span>
+            {(BOX_IMAGES[box.id] ?? []).map((src, i) => (
+              <div key={i} className="w-20 h-20 bg-white border border-gray-100 rounded-xl flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-brand-red transition-all p-2 overflow-hidden">
+                <Image src={src} alt={`${box.name} ${i + 1}`} width={64} height={64} className="object-contain w-full h-full" />
               </div>
             ))}
           </div>

@@ -1,6 +1,14 @@
 "use client";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { CheckCircle, Leaf, Truck, ShieldCheck, Users } from "lucide-react";
+
+const CDN = "https://www.meetyourmeat.ca/cdn/shop/files";
+const BBQ_IMAGES: Record<string, string> = {
+  "bbq-standard":    `${CDN}/boitemeetyourmeat_cefee40e-cff5-4ad6-9c5e-35241bcc4562.png?v=1713988500`,
+  "bbq-feast":       `${CDN}/boitemeetyourmeat_02c0a899-3cd8-459a-8edf-004f8bc9989f.png?v=1765228562`,
+  "bbq-grillmaster": `${CDN}/boitemeetyourmeat.png?v=1713988485`,
+};
 import { BBQ_BOXES } from "@/lib/data";
 import { useCart } from "@/lib/cart-context";
 import { useRouter } from "next/navigation";
@@ -27,12 +35,16 @@ export default function BBQProductPage({ params }: { params: { slug: string } })
     <div className="max-w-5xl mx-auto px-4 py-10">
       <div className="grid md:grid-cols-2 gap-10 items-start">
         {/* Image */}
-        <div className="bg-gradient-to-br from-orange-800 to-red-900 rounded-3xl h-56 sm:h-auto sm:aspect-square flex items-center justify-center relative">
-          <div className="text-center text-white">
-            <div className="text-8xl mb-3">🍖</div>
-            <p className="text-orange-200 text-sm">Photo BBQ</p>
-          </div>
-          <span className="absolute top-4 left-4 bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-sm">
+        <div className="bg-white rounded-3xl border border-gray-100 h-56 sm:h-auto sm:aspect-square flex items-center justify-center relative p-6">
+          <Image
+            src={BBQ_IMAGES[box.id] ?? `${CDN}/boitemeetyourmeat.png?v=1713988485`}
+            alt={box.name}
+            width={400}
+            height={400}
+            className="object-contain w-full h-full"
+            priority
+          />
+          <span className="absolute top-4 left-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full">
             {box.badge}
           </span>
           <span className="absolute top-4 right-4 badge-halal">

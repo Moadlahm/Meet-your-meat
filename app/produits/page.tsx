@@ -1,6 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { CheckCircle, Leaf, ChevronRight } from "lucide-react";
 import { PREMADE_BOXES, BBQ_BOXES } from "@/lib/data";
+
+const CDN = "https://www.meetyourmeat.ca/cdn/shop/files";
+const BOX_IMAGES: Record<string, string> = {
+  essentielle: `${CDN}/meetyourmeat-essentiel_f6e2ca18-41d2-40dd-9e84-3c3b43f08a21.png?v=1765228637`,
+  standard:    `${CDN}/boite_standard_1.png?v=1765228562`,
+  avantage:    `${CDN}/Boite_avantage.png?v=1765228664`,
+};
 
 export default function ProduitsPage() {
   return (
@@ -34,11 +42,14 @@ export default function ProduitsPage() {
           {PREMADE_BOXES.map((box) => (
             <div key={box.id} className="card border border-gray-100 hover:shadow-lg transition-shadow flex flex-col">
               {/* Image */}
-              <div className="bg-gray-100 h-52 flex items-center justify-center relative flex-shrink-0">
-                <div className="text-center">
-                  <div className="text-6xl mb-2">🥩</div>
-                  <p className="text-xs text-gray-400">Photo viande fraîche</p>
-                </div>
+              <div className="bg-white h-52 flex items-center justify-center relative flex-shrink-0 p-4">
+                <Image
+                  src={BOX_IMAGES[box.id] ?? `${CDN}/boitemeetyourmeat.png?v=1713988485`}
+                  alt={box.name}
+                  width={200}
+                  height={180}
+                  className="object-contain h-44 w-auto"
+                />
                 {box.badge && (
                   <span className="absolute top-3 left-3 bg-brand-red text-white text-xs font-bold px-2 py-1 rounded-full">
                     {box.badge}
