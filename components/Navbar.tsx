@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -16,25 +17,29 @@ export default function Navbar() {
     { href: "/contact", label: "Contact" },
   ];
 
+  const ticker = "🚚 LIVRAISON DIMANCHE  ·  Rabais automatique de 10% · Minimum 120$  ·  🥩 Viande halal fraîche certifiée  ·  Commandez avant vendredi 23h59  ·  ";
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      {/* Announcement bar */}
-      <div className="bg-brand-red text-white text-center text-xs sm:text-sm py-2 px-4 font-medium">
-        <span className="sm:hidden">🎁 <span className="font-black">-10$ 1ère commande</span> · 🚚 Livraison dimanche</span>
-        <span className="hidden sm:inline">🎁 <span className="font-black">-10$ sur votre 1ère commande</span> · 🚚 Livraison dimanche · Commandez avant vendredi 23h59</span>
+      {/* Marquee */}
+      <div className="bg-brand-red text-white text-xs sm:text-sm py-2 overflow-hidden whitespace-nowrap">
+        <div className="inline-block animate-marquee font-medium">
+          {ticker}{ticker}{ticker}
+        </div>
       </div>
 
       <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        {/* Logo */}
         <Link href="/" className="flex items-center">
-          <div className="bg-brand-red px-3 py-1.5 rounded">
-            <span className="text-white font-black text-lg tracking-tight">
-              meet<span className="font-light">yourmeat</span>
-            </span>
-          </div>
+          <Image
+            src="https://www.meetyourmeat.ca/cdn/shop/files/meetyourmeatlogo.png?v=1713745891"
+            alt="MeetYourMeat"
+            width={180}
+            height={48}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <Link
@@ -47,7 +52,6 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Actions */}
         <div className="flex items-center gap-3">
           <Link href="/panier" className="relative p-2 hover:text-brand-red transition-colors">
             <ShoppingCart size={22} />
@@ -57,17 +61,12 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-          <button
-            className="md:hidden p-2"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
+          <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {open && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4">
           {links.map((l) => (
