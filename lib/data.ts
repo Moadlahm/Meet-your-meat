@@ -87,7 +87,7 @@ export const BBQ_BOXES = [
     image: "/images/bbq-standard.jpg",
     badge: "BBQ",
     contents: [
-      "2 kg Poulet (skewers ou pilons)",
+      "2 kg Poulet",
       "1 kg Merguez",
       "1 kg Burgers",
       "1 kg Nevada steak",
@@ -104,8 +104,8 @@ export const BBQ_BOXES = [
     image: "/images/bbq-feast.jpg",
     badge: "Le plus populaire",
     contents: [
-      "2 kg Chicken skewers",
-      "1 kg Beef skewers",
+      "2 kg Brochettes de poulet",
+      "1 kg Brochettes de boeuf",
       "1 kg Burgers",
       "1 kg Merguez",
       "1.5 kg Nevada steak",
@@ -124,8 +124,8 @@ export const BBQ_BOXES = [
     contents: [
       "1 kg Contre-filet",
       "1.5 kg Nevada steak",
-      "2 kg Chicken skewers",
-      "1 kg Beef skewers",
+      "2 kg Brochettes de poulet",
+      "1 kg Brochettes de boeuf",
       "1 kg Burgers",
       "1 kg Merguez",
     ],
