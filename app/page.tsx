@@ -238,14 +238,16 @@ export default function HomePage() {
       </section>
 
       {/* ── BÉNÉFICES ── */}
-      <section className="relative overflow-hidden">
-        <Image
-          src={`${CDN}/BENEFITCLIENTS_1.png?v=1765228637`}
-          alt="Pourquoi choisir MeetYourMeat"
-          width={1600}
-          height={600}
-          className="w-full object-cover"
-        />
+      <section className="py-10 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <Image
+            src={`${CDN}/BENEFITCLIENTS_1.png?v=1765228637`}
+            alt="Pourquoi choisir MeetYourMeat"
+            width={1200}
+            height={500}
+            className="w-full h-auto object-contain rounded-2xl"
+          />
+        </div>
       </section>
 
       {/* ── TÉMOIGNAGES ── */}
@@ -276,13 +278,13 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="rounded-2xl overflow-hidden">
+          <div className="max-w-3xl mx-auto">
             <Image
               src={`${CDN}/avis-meetyourmeat.png?v=1765228664`}
               alt="Avis clients MeetYourMeat"
-              width={1200}
+              width={900}
               height={400}
-              className="w-full object-cover"
+              className="w-full h-auto object-contain rounded-2xl"
             />
           </div>
         </div>
